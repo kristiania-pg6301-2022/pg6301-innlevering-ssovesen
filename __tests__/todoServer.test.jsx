@@ -6,12 +6,12 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/getAll", App);
+app.use("/api", App);
 
 describe("Todo app server testing", () => {
-  it("should return a 200 status code and message"),
-    async () => {
-      const response = await request(app().get("/api/getAll"));
-      expect(response.status).toBe(200);
-    };
+  it("should return a 200 status code and message", async () => {
+    const response = await request(app).get("/api/getAll");
+    expect(response.status).toBe(200);
+    expect(response.body).toMatchObject({ message: "This is all" });
+  });
 });
