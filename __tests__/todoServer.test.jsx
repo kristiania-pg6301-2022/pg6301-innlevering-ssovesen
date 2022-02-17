@@ -9,19 +9,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api", App);
 
 describe("Todo app server testing", () => {
-  it("should return a 200 status code and message", async () => {
+  it("should return a 200 status code", async () => {
     const response = await request(app).get("/api/getAll");
     expect(response.status).toBe(200);
-    expect(response.body).toMatchObject({ message: "This is all" });
   });
 
-  it("should list all todos", async () => {
+  it("should list a random todo", async () => {
     const response = await request(app).get("/api/getAll");
     expect(response.body).toMatchObject({
       id: expect.any(Number),
       title: expect.any(String),
       text: expect.any(String),
-      finished: expect.any(Boolean),
+      completed: expect.any(Boolean),
     });
   });
 });
