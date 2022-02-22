@@ -51,7 +51,7 @@ describe("Todos app server testing", () => {
     expect(response.status).toBe(200);
     expect(response.body).toEqual(
       expect.objectContaining({
-        message: "Todos added successfully",
+        message: "Todo added successfully",
       })
     );
   });
