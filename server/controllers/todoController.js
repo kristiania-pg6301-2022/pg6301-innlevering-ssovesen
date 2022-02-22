@@ -4,18 +4,12 @@ import { randomTodos, Todos } from "../todos.js";
 //@route GET /api/getAll
 //@access Public
 export const getAll = (req, res) => {
-  try {
-    if (Todos.length <= 0) {
-      res.status(404).json({
-        message: "No todos found",
-      });
-    } else {
-      res.json(Todos);
-    }
-  } catch (err) {
-    res.status(500).json({
-      error: err.message,
+  if (Todos.length <= 0) {
+    res.status(404).json({
+      message: "No todos found",
     });
+  } else {
+    res.json(Todos);
   }
 };
 
@@ -23,26 +17,24 @@ export const getAll = (req, res) => {
 //@route POST /api/addTodo
 //@access Public
 export const addTodo = (req, res) => {
-  try {
-    const { id, title, text, completed } = req.body;
-    if (id && title && text) {
-      Todos.push({
-        id,
-        title,
-        text,
-        completed,
-      });
-      res.status(200).json({
-        message: "Todo added successfully",
-      });
-    } else {
-      res.status(400).json({
-        message: "Please provide all the required fields",
-      });
-    }
-  } catch (err) {
-    res.status(500).json({
-      error: err.message,
+  const { id, title, text, completed } = req.body;
+  const todoExists = Todos.find((todo) => todo.id === id);
+  if (todoExists) {
+    res.status(400).json({
+      message: "Todo already exists",
+    });
+  } else if (title && text) {
+    const newTodo = {
+      id,
+      title,
+      text,
+      completed,
+    };
+    Todos.push(newTodo);
+    res.json({ message: "Todo added successfully" });
+  } else {
+    res.status(400).json({
+      message: "Please provide all required fields",
     });
   }
 };
@@ -51,19 +43,13 @@ export const addTodo = (req, res) => {
 //@route GET /api/getTodo/:id
 //@access Public
 export const getTodo = (req, res) => {
-  try {
-    const id = parseInt(req.params.id);
-    const todo = Todos.find((todo) => todo.id === id);
-    if (todo) {
-      res.json(todo);
-    } else {
-      res.status(404).json({
-        message: "Todo not found",
-      });
-    }
-  } catch (err) {
-    res.status(500).json({
-      error: err.message,
+  const id = parseInt(req.params.id);
+  const todo = Todos.find((todo) => todo.id === id);
+  if (todo) {
+    res.json(todo);
+  } else {
+    res.status(404).json({
+      message: "Todo not found",
     });
   }
 };
