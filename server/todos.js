@@ -5,6 +5,18 @@ export const Todos = [
     text: "Sigurd må vaske gulvet i dag",
     completed: false,
   },
+  {
+    id: 2,
+    title: "Gå på tur",
+    text: "Sigurd må tur i skogen i dag",
+    completed: false,
+  },
+  {
+    id: 3,
+    title: "Lufte hunden",
+    text: "Hunden må ut på tur i dag",
+    completed: false,
+  },
 ];
 
 export const randomTodos = () => {
