@@ -1,11 +1,16 @@
 import React from "react";
-export const Todo = ({ todo }) => {
-  const { title, text, completed } = todo;
-
+export const Todo = (props) => {
   return (
     <li>
-      <h1>{title}</h1>
-      <p>{text}</p>
+      <h1>{props.todo.title}</h1>
+      <p>{props.todo.text}</p>
+      <button
+        onClick={() => {
+          props.whenCompleted(props.todo);
+        }}
+      >
+        {props.todo.completed ? "Gjort" : "false"}
+      </button>
     </li>
   );
 };
