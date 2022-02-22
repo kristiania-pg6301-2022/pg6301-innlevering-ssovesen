@@ -46,8 +46,10 @@
     "collectCoverageFrom": [
       "**/*.{jsx,js}",
       "!coverage/**",
-      "!dist/**",
-      "!index.jsx"
+      "!**/dist/**",
+      "!**/index.jsx",
+      "!**/babel.config.js",
+      "!babel.config.js"
     ]
   },
   "babel": {
