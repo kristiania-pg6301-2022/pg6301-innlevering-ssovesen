@@ -77,19 +77,13 @@ export const deleteTodo = (req, res) => {
 export const updateTodo = (req, res) => {
   const id = parseInt(req.params.id);
   const todo = Todos.find((todo) => todo.id === id);
-  if (todo) {
-    const { completed } = req.body;
-    if (completed) {
-      todo.completed = completed;
-      res.json({ message: "Todo updated successfully" });
-    } else {
-      res.status(400).json({
-        message: "Please provide all required fields",
-      });
-    }
-  } else {
+  if (!todo) {
     res.status(404).json({
       message: "Todo not found",
     });
+  } else {
+    const { completed } = req.body;
+    todo.completed = completed;
+    res.json({ message: "Todo updated successfully" });
   }
 };
