@@ -33,7 +33,7 @@ export const addTodo = (req, res) => {
         completed,
       });
       res.status(200).json({
-        message: "Todo added successfully",
+        message: "Todos added successfully",
       });
     } else {
       res.status(400).json({

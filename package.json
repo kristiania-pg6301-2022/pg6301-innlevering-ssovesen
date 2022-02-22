@@ -52,18 +52,6 @@
       "!babel.config.js"
     ]
   },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
-    ]
-  },
   "engines": {
     "node": "16.13.2",
     "npm": "8.5.0"

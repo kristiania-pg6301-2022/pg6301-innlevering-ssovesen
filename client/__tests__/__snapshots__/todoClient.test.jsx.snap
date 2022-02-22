@@ -5,5 +5,18 @@ exports[`Client tests should display page  1`] = `
   <h1>
     FrontPage
   </h1>
+  <a
+    href="/todos"
+  >
+    Todo
+  </a>
+</div>
+`;
+
+exports[`Client tests should render todo 1`] = `
+<div>
+  <h1>
+    Todo
+  </h1>
 </div>
 `;
