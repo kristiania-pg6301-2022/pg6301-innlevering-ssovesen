@@ -5,13 +5,13 @@ import { randomTodos, Todos } from "../todos.js";
 //@access Public
 export const getAll = (req, res) => {
   try {
-    const { id, title, text, completed } = randomTodos();
-    res.status(200).json({
-      id,
-      title,
-      text,
-      completed,
-    });
+    if (Todos.length <= 0) {
+      res.status(404).json({
+        message: "No todos found",
+      });
+    } else {
+      res.json(Todos);
+    }
   } catch (err) {
     res.status(500).json({
       error: err.message,
