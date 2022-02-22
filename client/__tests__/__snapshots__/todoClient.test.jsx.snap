@@ -14,9 +14,8 @@ exports[`Client tests should display page  1`] = `
 `;
 
 exports[`Client tests should render todo 1`] = `
-<div>
-  <h1>
-    Todo
-  </h1>
-</div>
+"<li>
+  <h1>Orjan should remember to test</h1>
+  <p>Orjan doesnt test enough, so i needs a reminder</p>
+</li>"
 `;
