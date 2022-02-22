@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import pretty from "pretty";
 import { MemoryRouter } from "react-router-dom";
 import { Frontpage } from "../pages/frontpage";
+import { Todos } from "../pages/todos";
 
 describe("Client tests", () => {
   it("should display page ", () => {
@@ -26,10 +27,10 @@ describe("Client tests", () => {
     const element = document.createElement("div");
     ReactDOM.render(
       <MemoryRouter initialEntries={["/todo"]}>
-        <Todo todo={todo} />
+        <Todos />
       </MemoryRouter>,
       element
     );
-    expect(element.innerHTML).toMatchSnapshot();
+    expect(element).toMatchSnapshot();
   });
 });

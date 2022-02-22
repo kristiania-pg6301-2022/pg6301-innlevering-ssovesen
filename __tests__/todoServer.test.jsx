@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/api", TodoApp);
 
-describe("Todo app server testing", () => {
+describe("Todos app server testing", () => {
   it("should return a 200 status code", async () => {
     const response = await request(app).get("/api/getAll");
     expect(response.status).toBe(200);
@@ -51,7 +51,7 @@ describe("Todo app server testing", () => {
     expect(response.status).toBe(200);
     expect(response.body).toEqual(
       expect.objectContaining({
-        message: "Todo added successfully",
+        message: "Todos added successfully",
       })
     );
   });
