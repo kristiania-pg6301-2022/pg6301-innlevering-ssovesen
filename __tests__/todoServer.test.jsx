@@ -113,7 +113,7 @@ describe("Todos app server testing", () => {
   });
 
   it("should update task when completed", async () => {
-    const response = await request(app).put("/api/todo/1").send({
+    const response = await request(app).put("/api/todo/3").send({
       completed: true,
     });
     expect(response.status).toBe(200);
@@ -122,13 +122,13 @@ describe("Todos app server testing", () => {
         message: "Todo updated successfully",
       })
     );
-    const response2 = await request(app).get("/api/todo/1");
+    const response2 = await request(app).get("/api/todo/3");
     expect(response2.status).toBe(200);
     expect(response2.body).toEqual(
       expect.objectContaining({
-        id: 1,
-        title: "Vaske gulvet",
-        text: "Sigurd må vaske gulvet i dag",
+        id: 3,
+        title: "Lufte hunden",
+        text: "Hunden må ut på tur i dag",
         completed: true,
       })
     );
