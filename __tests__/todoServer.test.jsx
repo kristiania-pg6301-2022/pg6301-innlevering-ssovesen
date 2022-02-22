@@ -55,4 +55,27 @@ describe("Todo app server testing", () => {
       })
     );
   });
+
+  it("should get todo by id", async () => {
+    const response = await request(app).get("/api/getTodo/1");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        id: 1,
+        title: "Vaske gulvet",
+        text: "Sigurd må vaske gulvet i dag",
+        completed: false,
+      })
+    );
+  });
+
+  it("should return 404 if todo does not exis", async () => {
+    const response = await request(app).get("/api/getTodo/-1");
+    expect(response.status).toBe(404);
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        message: "Todo not found",
+      })
+    );
+  });
 });

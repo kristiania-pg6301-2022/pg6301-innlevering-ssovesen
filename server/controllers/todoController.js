@@ -46,3 +46,24 @@ export const addTodo = (req, res) => {
     });
   }
 };
+
+//@desc Get a todo
+//@route GET /api/getTodo/:id
+//@access Public
+export const getTodo = (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const todo = Todos.find((todo) => todo.id === id);
+    if (todo) {
+      res.json(todo);
+    } else {
+      res.status(404).json({
+        message: "Todo not found",
+      });
+    }
+  } catch (err) {
+    res.status(500).json({
+      error: err.message,
+    });
+  }
+};

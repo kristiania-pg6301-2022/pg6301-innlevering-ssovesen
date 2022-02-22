@@ -10,3 +10,7 @@ Content-Type: application/json
   "text": "Test",
   "completed": false
 }
+
+
+###
+GET {{server}}/api/getTodo/2
