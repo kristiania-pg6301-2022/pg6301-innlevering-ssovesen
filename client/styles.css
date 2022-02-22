@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkslategray;
+}
+ul {
+    padding: 2rem;
+    list-style: none;
+
+}
+li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    background-color: lightgray;
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+li div {
+    margin-right: 2rem;
+}
+h1 {
+    text-align: center;
+}
+.completed {
+    color: white;
+    background-color: slategray;
+}
+button {
+    padding: 1rem 2rem;
+    margin: 0 0.2rem;
+}

@@ -58,7 +58,7 @@ export function Todos() {
           })}
         </ul>
       }
-      <div>Skille</div>
+      <h1>Completed</h1>
       <ul>
         {todos.map((todo) => {
           if (todo.completed) {
