@@ -116,7 +116,7 @@ describe("Todos app server testing", () => {
     const response = await request(app).put("/api/todo/1").send({
       completed: true,
     });
-    expect(response.status).toBe(200);
+
     expect(response.body).toEqual(
       expect.objectContaining({
         message: "Todo updated successfully",
