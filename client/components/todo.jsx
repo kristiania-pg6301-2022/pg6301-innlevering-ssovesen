@@ -9,7 +9,14 @@ export const Todo = (props) => {
           props.whenCompleted(props.todo);
         }}
       >
-        {props.todo.completed ? "Gjort" : "false"}
+        {props.todo.completed ? "Done" : "Todo"}
+      </button>
+      <button
+        onClick={() => {
+          props.whenDeleted(props.todo);
+        }}
+      >
+        Delete
       </button>
     </li>
   );

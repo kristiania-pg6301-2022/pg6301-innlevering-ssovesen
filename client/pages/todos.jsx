@@ -4,6 +4,14 @@ import { Todo } from "../components/todo";
 export function Todos() {
   const [todos, setTodos] = useState([]);
 
+  function onDelete(todo) {
+    console.log(todo, "todo");
+    fetch(`/api/todo/${todo.id}`, { method: "DELETE" }).then((response) =>
+      response.json().then((data) => console.log(data))
+    );
+    getTodos();
+  }
+
   function onComplete(todo) {
     let status = undefined;
     todo.completed ? (status = false) : (status = true);
@@ -33,10 +41,38 @@ export function Todos() {
   }, []);
 
   return (
-    <ul>
-      {todos.map((todo) => {
-        return <Todo key={todo.id} todo={todo} whenCompleted={onComplete} />;
-      })}
-    </ul>
+    <>
+      {
+        <ul>
+          {todos.map((todo) => {
+            if (!todo.completed) {
+              return (
+                <Todo
+                  key={todo.id}
+                  todo={todo}
+                  whenDeleted={onDelete}
+                  whenCompleted={onComplete}
+                />
+              );
+            }
+          })}
+        </ul>
+      }
+      <div>Skille</div>
+      <ul>
+        {todos.map((todo) => {
+          if (todo.completed) {
+            return (
+              <Todo
+                key={todo.id}
+                todo={todo}
+                whenDeleted={onDelete}
+                whenCompleted={onComplete}
+              />
+            );
+          }
+        })}
+      </ul>
+    </>
   );
 }
