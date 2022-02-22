@@ -9,7 +9,7 @@ export const Todos = [
     id: 2,
     title: "Gå på tur",
     text: "Sigurd må tur i skogen i dag",
-    completed: false,
+    completed: true,
   },
   {
     id: 3,

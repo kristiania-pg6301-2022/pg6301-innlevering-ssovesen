@@ -5,16 +5,21 @@ export function Todos() {
   const [todos, setTodos] = useState([]);
 
   function onComplete(todo) {
-    console.log("onComplete works");
+    let status = undefined;
+    todo.completed ? (status = false) : (status = true);
+
+    console.log("onComplete works", todo.completed);
+
     const requestOptions = {
       method: "Put",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ completed: false }),
+      body: JSON.stringify({ completed: status }),
     };
 
     fetch(`/api/todo/${todo.id}`, requestOptions).then((response) =>
-      console.log(response.status)
+      response.json().then((data) => console.log(data))
     );
+    getTodos();
   }
 
   const getTodos = () => {
@@ -25,7 +30,7 @@ export function Todos() {
 
   useEffect(() => {
     getTodos();
-  }, [onComplete]);
+  }, []);
 
   return (
     <ul>
