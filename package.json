@@ -49,7 +49,10 @@
       "!**/dist/**",
       "!**/index.jsx",
       "!**/babel.config.js",
-      "!babel.config.js"
+      "!babel.config.js",
+      "!**/todos.js",
+      "!**/server.js",
+      "!**/server/middleware/pathResolve.js"
     ]
   },
   "engines": {

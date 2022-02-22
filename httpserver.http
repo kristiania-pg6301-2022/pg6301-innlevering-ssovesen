@@ -5,12 +5,17 @@ POST {{server}}/api/addTodo
 Content-Type: application/json
 
 {
-  "id": 10,
+  "id": 2,
   "title": "Test",
   "text": "Test",
   "completed": false
 }
 
+###
+GET {{server}}/api/todo/2
 
 ###
-GET {{server}}/api/getTodo/2
+GET {{server}}/api/todo/66
+
+###
+DELETE {{server}}/api/todo/2
