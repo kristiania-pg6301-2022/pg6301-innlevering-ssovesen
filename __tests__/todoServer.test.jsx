@@ -14,13 +14,18 @@ describe("Todo app server testing", () => {
     expect(response.status).toBe(200);
   });
 
-  it("should list a random todo", async () => {
+  // should test to get all todos
+  it("should get all todos", async () => {
     const response = await request(app).get("/api/getAll");
-    expect(response.body).toMatchObject({
-      id: expect.any(Number),
-      title: expect.any(String),
-      text: expect.any(String),
-      completed: expect.any(Boolean),
-    });
+    expect(response.body).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: expect.any(Number),
+          title: expect.any(String),
+          text: expect.any(String),
+          completed: expect.any(Boolean),
+        }),
+      ])
+    );
   });
 });
