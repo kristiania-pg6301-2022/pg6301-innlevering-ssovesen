@@ -4,9 +4,10 @@ import {
   addTodo,
   getTodo,
   deleteTodo,
+  updateTodo,
 } from "../controllers/todoController.js";
 export const TodoApp = express.Router();
 
 TodoApp.route("/getAll").get(getAll);
 TodoApp.route("/addTodo").post(addTodo);
-TodoApp.route("/todo/:id").get(getTodo).delete(deleteTodo);
+TodoApp.route("/todo/:id").get(getTodo).delete(deleteTodo).put(updateTodo);

@@ -111,4 +111,26 @@ describe("Todos app server testing", () => {
       })
     );
   });
+
+  it("should update task when completed", async () => {
+    const response = await request(app).put("/api/todo/1").send({
+      completed: true,
+    });
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        message: "Todo updated successfully",
+      })
+    );
+    const response2 = await request(app).get("/api/todo/1");
+    expect(response2.status).toBe(200);
+    expect(response2.body).toEqual(
+      expect.objectContaining({
+        id: 1,
+        title: "Vaske gulvet",
+        text: "Sigurd må vaske gulvet i dag",
+        completed: true,
+      })
+    );
+  });
 });
