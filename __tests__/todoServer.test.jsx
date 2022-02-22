@@ -28,4 +28,31 @@ describe("Todo app server testing", () => {
       ])
     );
   });
+
+  it("should fail to add a todo", async () => {
+    const response = await request(app).post("/api/addTodo").send({
+      title: "test",
+      text: "test",
+    });
+    expect(response.status).toBe(400);
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        message: "Please provide all the required fields",
+      })
+    );
+  });
+
+  it("should add a todo", async () => {
+    const response = await request(app).post("/api/addTodo").send({
+      id: 1,
+      title: "test",
+      text: "test",
+    });
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        message: "Todo added successfully",
+      })
+    );
+  });
 });
