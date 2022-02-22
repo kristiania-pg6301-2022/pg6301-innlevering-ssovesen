@@ -1,5 +1,6 @@
 import express from "express";
 import { TodoApp } from "../server/routes/TodoApp.js";
+import { Todos } from "../server/todos";
 import request from "supertest";
 
 const app = express();
@@ -72,7 +73,7 @@ describe("Todos app server testing", () => {
   });
 
   it("should get todo by id", async () => {
-    const response = await request(app).get("/api/getTodo/1");
+    const response = await request(app).get("/api/todo/1");
     expect(response.status).toBe(200);
     expect(response.body).toEqual(
       expect.objectContaining({
@@ -85,9 +86,26 @@ describe("Todos app server testing", () => {
   });
 
   it("should return 404 if todo does not exis", async () => {
-    const response = await request(app).get("/api/getTodo/-1");
+    const response = await request(app).get("/api/todo/-1");
     expect(response.status).toBe(404);
     expect(response.body).toEqual(
+      expect.objectContaining({
+        message: "Todo not found",
+      })
+    );
+  });
+
+  it("should delete todo and check that it is deleted", async () => {
+    const response = await request(app).delete("/api/todo/1");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        message: "Todo deleted successfully",
+      })
+    );
+    const response2 = await request(app).get("/api/todo/1");
+    expect(response2.status).toBe(404);
+    expect(response2.body).toEqual(
       expect.objectContaining({
         message: "Todo not found",
       })

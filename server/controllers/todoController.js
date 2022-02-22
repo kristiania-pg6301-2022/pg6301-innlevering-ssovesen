@@ -53,3 +53,20 @@ export const getTodo = (req, res) => {
     });
   }
 };
+
+//@desc Delete a todo
+//@route DELETE /api/deleteTodo/:id
+//@access Public
+export const deleteTodo = (req, res) => {
+  const id = parseInt(req.params.id);
+  const todo = Todos.find((todo) => todo.id === id);
+  if (todo) {
+    const index = Todos.indexOf(todo);
+    Todos.splice(index, 1);
+    res.json({ message: "Todo deleted successfully" });
+  } else {
+    res.status(404).json({
+      message: "Todo not found",
+    });
+  }
+};
