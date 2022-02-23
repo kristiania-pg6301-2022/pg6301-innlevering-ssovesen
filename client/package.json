@@ -16,6 +16,7 @@
     "@parcel/babel-preset-env": "^2.3.2",
     "babel-jest": "^27.5.1",
     "jest": "^27.5.1",
+    "node-fetch": "^3.2.0",
     "parcel": "^2.3.2",
     "pretty": "^2.0.0"
   },
@@ -27,7 +28,7 @@
   },
   "jest": {
     "testEnvironment": "jsdom"
-    },
+  },
   "babel": {
     "presets": [
       "@babel/preset-react",
@@ -41,4 +42,4 @@
       ]
     ]
   }
-  }
+}
