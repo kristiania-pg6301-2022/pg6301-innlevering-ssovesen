@@ -119,7 +119,7 @@ describe("Todos app server testing", () => {
     expect(response.status).toBe(200);
     expect(response.body).toEqual(
       expect.objectContaining({
-        message: "Todo updated successfully",
+        message: "Todo completed successfully",
       })
     );
     const response2 = await request(app).get("/api/todo/3");
@@ -130,6 +130,28 @@ describe("Todos app server testing", () => {
         title: "Lufte hunden",
         text: "Hunden må ut på tur i dag",
         completed: true,
+      })
+    );
+  });
+
+  it("should update task to not completed", async () => {
+    const response = await request(app).put("/api/todo/3").send({
+      completed: false,
+    });
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        message: "Todo set to not completed",
+      })
+    );
+    const response2 = await request(app).get("/api/todo/3");
+    expect(response2.status).toBe(200);
+    expect(response2.body).toEqual(
+      expect.objectContaining({
+        id: 3,
+        title: "Lufte hunden",
+        text: "Hunden må ut på tur i dag",
+        completed: false,
       })
     );
   });
