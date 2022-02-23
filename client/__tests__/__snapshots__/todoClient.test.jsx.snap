@@ -1,17 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Client tests should display page  1`] = `
-<div>
-  <h1>
-    FrontPage
-  </h1>
-  <a
-    href="/todos"
-  >
-    Todo
-  </a>
-</div>
-`;
+exports[`Client tests should display page  1`] = `"<h1>FrontPage</h1><a href=\\"/todos\\">Todo</a>"`;
 
 exports[`Client tests should render todo 1`] = `
 "<li class=\\"\\">
@@ -21,4 +10,15 @@ exports[`Client tests should render todo 1`] = `
   </div>
   <div><button>Todo</button><button>Delete</button></div>
 </li>"
+`;
+
+exports[`Client tests should render todos page 1`] = `
+"<form>
+  <div>Title: <input type=\\"text\\" name=\\"title\\" value=\\"\\"></div>
+  <div>Text <input type=\\"text\\" name=\\"text\\" value=\\"\\"></div>
+  <div><button type=\\"submit\\">Add</button></div>
+</form>
+<ul></ul>
+<h1>Completed</h1>
+<ul></ul>"
 `;

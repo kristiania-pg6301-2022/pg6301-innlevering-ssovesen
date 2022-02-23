@@ -4,6 +4,7 @@ import pretty from "pretty";
 import { MemoryRouter } from "react-router-dom";
 import { Frontpage } from "../pages/frontpage";
 import { Todo } from "../components/todo";
+import { Todos } from "../pages/todos";
 
 describe("Client tests", () => {
   it("should display page ", () => {
@@ -14,7 +15,18 @@ describe("Client tests", () => {
       </MemoryRouter>,
       element
     );
-    expect(element).toMatchSnapshot();
+    expect(pretty(element.innerHTML)).toMatchSnapshot();
+  });
+
+  it("should render todos page", () => {
+    const element = document.createElement("div");
+    ReactDOM.render(
+      <MemoryRouter initialEntries={["/todos"]}>
+        <Todos />
+      </MemoryRouter>,
+      element
+    );
+    expect(pretty(element.innerHTML)).toMatchSnapshot();
   });
 
   it("should render todo", () => {
@@ -25,12 +37,7 @@ describe("Client tests", () => {
       completed: false,
     };
     const element = document.createElement("div");
-    ReactDOM.render(
-      <MemoryRouter initialEntries={["/todo"]}>
-        <Todo todo={todo} />
-      </MemoryRouter>,
-      element
-    );
-    expect(pretty(element.innerHTML)).toMatchSnapshot();
+    ReactDOM.render(<Todo todo={todo} />, element);
+    expect(element.querySelector("h2").innerHTML).toEqual(todo.title);
   });
 });
