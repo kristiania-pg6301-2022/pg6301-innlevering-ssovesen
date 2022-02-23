@@ -1,6 +1,6 @@
 import express from "express";
-import { TodoApp } from "../server/routes/TodoApp.js";
-import { Todos } from "../server/todos";
+import { TodoApp } from "../routes/TodoApp.js";
+import { Todos } from "../todos.js";
 import request from "supertest";
 
 const app = express();
