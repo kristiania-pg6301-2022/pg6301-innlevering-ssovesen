@@ -84,6 +84,10 @@ export const updateTodo = (req, res) => {
   } else {
     const { completed } = req.body;
     todo.completed = completed;
-    res.json({ message: "Todo updated successfully" });
+    if (completed) {
+      res.json({ message: "Todo completed successfully" });
+    } else {
+      res.json({ message: "Todo set to not completed" });
+    }
   }
 };
