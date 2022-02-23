@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Todo } from "../components/todo";
+import { AddTodo } from "../components/AddTodo";
 
 export function Todos() {
   const [todos, setTodos] = useState([]);
@@ -42,6 +43,7 @@ export function Todos() {
 
   return (
     <>
+      <AddTodo getTodo={getTodos} />
       {
         <ul>
           {todos.map((todo) => {
