@@ -33,6 +33,8 @@ I denne oppgaven har vi tatt i bruk controllere hvor der det gjøres endringer o
 
 Selve testene vet vi kan forbedres, men tror nok behovet for en ekstra forelesning om jest testing på client og serverside er nødvendig for å få dette på plass.
 
+https://pg6301-todo.herokuapp.com/   <-- Applikasjonen deployed på Heroku
+
 
 # Kommentarer: 
 
