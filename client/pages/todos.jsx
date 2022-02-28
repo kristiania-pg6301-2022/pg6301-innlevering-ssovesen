@@ -44,37 +44,43 @@ export function Todos() {
   return (
     <>
       <AddTodo getTodo={getTodos} />
-      {
+      <div>
+        {
+          <ul>
+            {todos.length > 0
+              ? todos.map((todo) => {
+                  if (!todo.completed) {
+                    return (
+                      <Todo
+                        key={todo.id}
+                        todo={todo}
+                        whenDeleted={onDelete}
+                        whenCompleted={onComplete}
+                      />
+                    );
+                  }
+                })
+              : "Du har ingen gjøremål"}
+          </ul>
+        }
+        <h1>Completed</h1>
         <ul>
-          {todos.map((todo) => {
-            if (!todo.completed) {
-              return (
-                <Todo
-                  key={todo.id}
-                  todo={todo}
-                  whenDeleted={onDelete}
-                  whenCompleted={onComplete}
-                />
-              );
-            }
-          })}
+          {todos.length > 0
+            ? todos.map((todo) => {
+                if (todo.completed) {
+                  return (
+                    <Todo
+                      key={todo.id}
+                      todo={todo}
+                      whenDeleted={onDelete}
+                      whenCompleted={onComplete}
+                    />
+                  );
+                }
+              })
+            : ""}
         </ul>
-      }
-      <h1>Completed</h1>
-      <ul>
-        {todos.map((todo) => {
-          if (todo.completed) {
-            return (
-              <Todo
-                key={todo.id}
-                todo={todo}
-                whenDeleted={onDelete}
-                whenCompleted={onComplete}
-              />
-            );
-          }
-        })}
-      </ul>
+      </div>
     </>
   );
 }

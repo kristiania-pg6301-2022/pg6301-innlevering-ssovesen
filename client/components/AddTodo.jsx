@@ -29,7 +29,7 @@ export function AddTodo({ getTodo }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="todoForm" onSubmit={handleSubmit}>
       <div>
         Title:{" "}
         <input
