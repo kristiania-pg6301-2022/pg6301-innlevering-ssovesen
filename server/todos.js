@@ -1,14 +1,14 @@
 export const Todos = [
   {
     id: 1,
-    title: "Vaske gulvet",
-    text: "Sigurd må vaske gulvet i dag",
+    title: "Legg til et gjøremål",
+    text: "Nedenfor kan du legge til et nytt gjøremål, og krysse av at dette er gjort",
     completed: false,
   },
   {
     id: 2,
-    title: "Gå på tur",
-    text: "Sigurd må tur i skogen i dag",
+    title: "Gamle gjøremål",
+    text: "gjøremål som du har gjort legger seg her.",
     completed: true,
   },
   {
@@ -18,6 +18,8 @@ export const Todos = [
     completed: false,
   },
 ];
+
+//TODO: bruker vi denne koden?
 
 export const randomTodos = () => {
   return Todos[Math.floor(Math.random() * Todos.length)];
