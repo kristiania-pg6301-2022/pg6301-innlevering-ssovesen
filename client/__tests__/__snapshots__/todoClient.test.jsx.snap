@@ -3,12 +3,14 @@
 exports[`Client tests should display page  1`] = `"<h1>FrontPage</h1><a href=\\"/todos\\">Todo</a>"`;
 
 exports[`Client tests should render todos page 1`] = `
-"<form>
+"<form class=\\"todoForm\\">
   <div>Title: <input type=\\"text\\" name=\\"title\\" value=\\"\\"></div>
   <div>Text <input type=\\"text\\" name=\\"text\\" value=\\"\\"></div>
   <div><button type=\\"submit\\">Add</button></div>
 </form>
-<ul></ul>
-<h1>Completed</h1>
-<ul></ul>"
+<div>
+  <ul>Du har ingen gjøremål</ul>
+  <h1>Completed</h1>
+  <ul></ul>
+</div>"
 `;
