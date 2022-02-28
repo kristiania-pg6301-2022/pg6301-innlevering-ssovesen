@@ -10,7 +10,7 @@ export const Todo = (props) => {
       </div>
       <div>
         <button
-          className={`${completed ? 'button-completed': ''}`}
+          className={`${completed ? "button-completed" : ""}`}
           onClick={() => {
             props.whenCompleted(props.todo);
           }}
