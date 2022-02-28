@@ -45,7 +45,7 @@ button {
     background-color: green;
 }
 
-.todo-form {
+.todoForm {
     width: fit-content;
     height: fit-content;
     display: flex;
@@ -55,7 +55,7 @@ button {
     margin: 2rem 0 2rem 2rem ;
      
 }
-.todo-form input {
+.todoForm input {
     margin-bottom: 1rem;
     padding: 0.6rem;
     border-radius: 10px;
