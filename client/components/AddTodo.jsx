@@ -2,7 +2,7 @@ import { useState } from "react";
 import React from "react";
 import { requestJSON } from "../utils/httpRequestHandlers";
 
-export function AddTodo({ getTodo, reload }) {
+export function AddTodo({ reload }) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
