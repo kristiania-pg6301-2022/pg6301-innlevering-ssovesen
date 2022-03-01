@@ -10,14 +10,15 @@ export const Todo = (props) => {
       </div>
       <div>
         <button
-          className={`${completed ? "button-completed" : ""}`}
+          className={`${!completed ? "button-completed" : ""}`}
           onClick={() => {
             props.whenCompleted(props.todo);
           }}
         >
-          {completed ? "Done" : "Todo"}
+          {completed ? "Undo" : "Complete"}
         </button>
         <button
+          className="button-delete"
           onClick={() => {
             props.whenDeleted(props.todo);
           }}
