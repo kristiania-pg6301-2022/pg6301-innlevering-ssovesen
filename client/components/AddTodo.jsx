@@ -1,35 +1,26 @@
 import { useState } from "react";
 import React from "react";
+import { postJSON } from "../utils/httpErrorHandler";
 
-export function AddTodo({ getTodo }) {
+export function AddTodo({ getTodo, reload }) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
-  function handleSubmit(event) {
+  async function postTodo(e) {
+    e.preventDefault();
     const id = Math.floor(Math.random() * 10000);
-    event.preventDefault();
-    fetch("/api/addTodo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id,
-        title,
-        text,
-        completed: false,
-      }),
-    })
-      .then((r) => r.json())
-      .then(() => {
-        getTodo();
-      });
-    setTitle("");
-    setText("");
+    await postJSON("/api/addTodo", { id, title, text });
+    reloadTodo();
   }
 
+  const reloadTodo = () => {
+    setTitle("");
+    setText("");
+    reload();
+  };
+
   return (
-    <form className="todoForm" onSubmit={handleSubmit}>
+    <form className="todoForm" onSubmit={postTodo}>
       <div>
         Title:{" "}
         <input
