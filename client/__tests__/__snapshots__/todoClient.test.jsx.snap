@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Client tests should display page  1`] = `"<h1>FrontPage</h1><a href=\\"/todos\\">Todo</a>"`;
+
+exports[`Client tests should render todos page 1`] = `
+"<h1>Welcome to this awesome todo app</h1>
+<p>Loading...</p>
+<div class=\\"app\\">
+  <form class=\\"todoForm\\">
+    <div>Title: <input type=\\"text\\" name=\\"title\\" value=\\"\\"></div>
+    <div>Text <input type=\\"text\\" name=\\"text\\" value=\\"\\"></div>
+    <div><button type=\\"submit\\">Add</button></div>
+  </form>
+  <div>
+    <ul></ul>
+    <h1>Completed</h1>
+    <ul></ul>
+  </div>
+</div>"
+`;

@@ -1,0 +1,29 @@
+GET {{server}}/api/getAll
+
+###
+POST {{server}}/api/addTodo
+Content-Type: application/json
+
+{
+  "id": 2,
+  "title": "Test",
+  "text": "Test",
+  "completed": false
+}
+
+###
+GET {{server}}/api/todo/2
+
+###
+GET {{server}}/api/todo/66
+
+###
+DELETE {{server}}/api/todo/2
+
+###
+PUT {{server}}/api/todo/2
+Content-Type: application/json
+
+{
+  "completed": true
+}
