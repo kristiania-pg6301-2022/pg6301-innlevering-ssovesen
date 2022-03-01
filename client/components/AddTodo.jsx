@@ -20,7 +20,7 @@ export function AddTodo({ getTodo, reload }) {
   };
 
   return (
-    <form onSubmit={postTodo}>
+    <form className="todoForm" onSubmit={postTodo}>
       <div>
         Title:{" "}
         <input

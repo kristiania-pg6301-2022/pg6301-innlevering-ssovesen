@@ -3,7 +3,9 @@
 exports[`Client tests should display page  1`] = `"<h1>FrontPage</h1><a href=\\"/todos\\">Todo</a>"`;
 
 exports[`Client tests should render todos page 1`] = `
-"<form>
+"<h1>Welcome to this awsome todo app</h1>
+<p>Loading...</p>
+<form class=\\"todoForm\\">
   <div>Title: <input type=\\"text\\" name=\\"title\\" value=\\"\\"></div>
   <div>Text <input type=\\"text\\" name=\\"text\\" value=\\"\\"></div>
   <div><button type=\\"submit\\">Add</button></div>

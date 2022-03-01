@@ -78,8 +78,8 @@ describe("Todos app server testing", () => {
     expect(response.body).toEqual(
       expect.objectContaining({
         id: 1,
-        title: "Vaske gulvet",
-        text: "Sigurd må vaske gulvet i dag",
+        title: "Legg til et gjøremål",
+        text: "Nedenfor kan du legge til et nytt gjøremål, og krysse av at dette er gjort",
         completed: false,
       })
     );

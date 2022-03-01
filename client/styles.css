@@ -4,10 +4,11 @@
     padding: 0;
 }
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: darkslategray;
+}
+#app {
+    display: grid;
+    grid-template-columns: 1fr 2fr
 }
 ul {
     padding: 2rem;
@@ -37,4 +38,26 @@ h1 {
 button {
     padding: 1rem 2rem;
     margin: 0 0.2rem;
+    border: none; 
+    border-radius: 10px;
+}
+.button-completed {
+    background-color: green;
+}
+
+.todoForm {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: white;  
+    margin: 2rem 0 2rem 2rem ;
+     
+}
+.todoForm input {
+    margin-bottom: 1rem;
+    padding: 0.6rem;
+    border-radius: 10px;
+    border-style: dashed;
 }
