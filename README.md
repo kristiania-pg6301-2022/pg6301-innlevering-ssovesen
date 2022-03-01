@@ -3,6 +3,8 @@
 
 ### Innlevering med tilbakemelding: React og express på Heroku
 
+av Sigurd Ovesen og Ørjan Skotnes
+
 Applikasjonen skal vise at dere behersker:
 
 * Parcel
