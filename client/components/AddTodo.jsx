@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import { postJSON } from "../utils/httpErrorHandler";
+import { requestJSON } from "../utils/httpRequestHandlers";
 
 export function AddTodo({ getTodo, reload }) {
   const [title, setTitle] = useState("");
@@ -9,7 +9,7 @@ export function AddTodo({ getTodo, reload }) {
   async function postTodo(e) {
     e.preventDefault();
     const id = Math.floor(Math.random() * 10000);
-    await postJSON("/api/addTodo", { id, title, text });
+    await requestJSON("/api/addTodo", { id, title, text }, "post");
     reloadTodo();
   }
 

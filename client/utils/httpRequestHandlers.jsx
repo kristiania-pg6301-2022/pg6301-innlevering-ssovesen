@@ -16,13 +16,22 @@ export async function fetchJSON(url) {
   }
 }
 
-export async function postJSON(url, json) {
+export async function requestJSON(url, json, method) {
   const res = await fetch(url, {
-    method: "post",
+    method: method,
     headers: {
       "content-type": "application/json",
     },
     body: JSON.stringify(json),
+  });
+  if (!res.ok) {
+    throw new HttpError(res.status, res.statusText);
+  }
+}
+
+export async function deleteJSON(url) {
+  const res = await fetch(url, {
+    method: "DELETE",
   });
   if (!res.ok) {
     throw new HttpError(res.status, res.statusText);

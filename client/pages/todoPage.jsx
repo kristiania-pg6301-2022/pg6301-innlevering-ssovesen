@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Todo } from "../components/todo";
 import { AddTodo } from "../components/AddTodo";
 import { useLoader } from "../utils/hooks/useLoader";
-import { fetchJSON } from "../utils/httpErrorHandler";
+import {
+  fetchJSON,
+  deleteJSON,
+  requestJSON,
+} from "../utils/httpRequestHandlers";
 
 export function TodoPage() {
   const {
@@ -12,30 +16,16 @@ export function TodoPage() {
     reload,
   } = useLoader(async () => await fetchJSON("/api/getAll"));
 
-  function onDelete(todo) {
-    console.log(todo, "todo");
-    fetch(`/api/todo/${todo.id}`, { method: "DELETE" }).then((response) =>
-      response.json().then((data) => console.log(data))
-    );
-    reload();
+  async function onDelete(todo) {
+    await deleteJSON(`/api/todo/${todo.id}`);
+    await reload();
   }
 
-  function onComplete(todo) {
+  async function onComplete(todo) {
     let status;
     todo.completed ? (status = false) : (status = true);
-
-    console.log("onComplete works", todo.completed);
-
-    const requestOptions = {
-      method: "Put",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ completed: status }),
-    };
-
-    fetch(`/api/todo/${todo.id}`, requestOptions).then((response) =>
-      response.json().then((data) => console.log(data))
-    );
-    reload();
+    await requestJSON(`/api/todo/${todo.id}`, { completed: status }, "PUT");
+    await reload();
   }
 
   return (
