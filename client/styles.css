@@ -6,7 +6,7 @@
 body {
     background-color: darkslategray;
 }
-#app {
+.app {
     display: grid;
     grid-template-columns: 1fr 2fr
 }
@@ -60,4 +60,8 @@ button {
     padding: 0.6rem;
     border-radius: 10px;
     border-style: dashed;
+}
+
+h1 {
+    margin-top: 1rem;
 }

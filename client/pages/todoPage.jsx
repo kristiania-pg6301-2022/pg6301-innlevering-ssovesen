@@ -40,41 +40,45 @@ export function TodoPage() {
 
   return (
     <>
-      <h1>Welcome to this awsome todo app</h1>
+      <h1>Welcome to this awesome todo app</h1>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
-      <AddTodo getTodo={todoList} reload={reload} />
-      {
-        <ul>
-          {todoList?.map((todo) => {
-            if (!todo.completed) {
-              return (
-                <Todo
-                  key={todo.id}
-                  todo={todo}
-                  whenDeleted={onDelete}
-                  whenCompleted={onComplete}
-                />
-              );
-            }
-          })}
-        </ul>
-      }
-      <h1>Completed</h1>
-      <ul>
-        {todoList?.map((todo) => {
-          if (todo.completed) {
-            return (
-              <Todo
-                key={todo.id}
-                todo={todo}
-                whenDeleted={onDelete}
-                whenCompleted={onComplete}
-              />
-            );
+      <div className="app">
+        <AddTodo getTodo={todoList} reload={reload} />
+        <div>
+          {
+            <ul>
+              {todoList?.map((todo) => {
+                if (!todo.completed) {
+                  return (
+                    <Todo
+                      key={todo.id}
+                      todo={todo}
+                      whenDeleted={onDelete}
+                      whenCompleted={onComplete}
+                    />
+                  );
+                }
+              })}
+            </ul>
           }
-        })}
-      </ul>
+          <h1>Completed</h1>
+          <ul>
+            {todoList?.map((todo) => {
+              if (todo.completed) {
+                return (
+                  <Todo
+                    key={todo.id}
+                    todo={todo}
+                    whenDeleted={onDelete}
+                    whenCompleted={onComplete}
+                  />
+                );
+              }
+            })}
+          </ul>
+        </div>
+      </div>
     </>
   );
 }
