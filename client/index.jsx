@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Frontpage } from "./pages/frontpage";
-import { Todos } from "./pages/todos.jsx";
+import { TodoPage } from "./pages/todoPage.jsx";
 
 function App() {
   return (
     <Routes>
       <Route path={"/"} element={<Frontpage />} />
-      <Route path={"/todos"} element={<Todos />} />
+      <Route path={"/todos"} element={<TodoPage />} />
     </Routes>
   );
 }

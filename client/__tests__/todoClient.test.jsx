@@ -4,7 +4,7 @@ import pretty from "pretty";
 import { MemoryRouter } from "react-router-dom";
 import { Frontpage } from "../pages/frontpage";
 import { Todo } from "../components/todo";
-import { Todos } from "../pages/todos";
+import { TodoPage } from "../pages/todoPage";
 
 describe("Client tests", () => {
   it("should display page ", () => {
@@ -23,7 +23,7 @@ describe("Client tests", () => {
     const element = document.createElement("div");
     ReactDOM.render(
       <MemoryRouter initialEntries={["/todos"]}>
-        <Todos />
+        <TodoPage />
       </MemoryRouter>,
       element
     );

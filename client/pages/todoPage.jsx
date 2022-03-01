@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Todo } from "../components/todo";
 import { AddTodo } from "../components/AddTodo";
+import { useLoader } from "../utils/hooks/useLoader";
+import { fetchJSON } from "../utils/httpErrorHandler";
 
-export function Todos() {
-  const [todos, setTodos] = useState([]);
+export function TodoPage() {
+  const {
+    loading,
+    error,
+    data: todoList,
+    reload,
+  } = useLoader(async () => await fetchJSON("/api/getAll"));
 
   function onDelete(todo) {
     console.log(todo, "todo");
     fetch(`/api/todo/${todo.id}`, { method: "DELETE" }).then((response) =>
       response.json().then((data) => console.log(data))
     );
-    getTodos();
+    reload();
   }
 
   function onComplete(todo) {
-    let status = undefined;
+    let status;
     todo.completed ? (status = false) : (status = true);
 
     console.log("onComplete works", todo.completed);
@@ -28,25 +35,18 @@ export function Todos() {
     fetch(`/api/todo/${todo.id}`, requestOptions).then((response) =>
       response.json().then((data) => console.log(data))
     );
-    getTodos();
+    reload();
   }
-
-  const getTodos = () => {
-    fetch("/api/getAll")
-      .then((response) => response.json())
-      .then((data) => setTodos(data));
-  };
-
-  useEffect(() => {
-    getTodos();
-  }, []);
 
   return (
     <>
-      <AddTodo getTodo={getTodos} />
+      <h1>Welcome to this awsome todo app</h1>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
+      <AddTodo getTodo={todoList} reload={reload} />
       {
         <ul>
-          {todos.map((todo) => {
+          {todoList?.map((todo) => {
             if (!todo.completed) {
               return (
                 <Todo
@@ -62,7 +62,7 @@ export function Todos() {
       }
       <h1>Completed</h1>
       <ul>
-        {todos.map((todo) => {
+        {todoList?.map((todo) => {
           if (todo.completed) {
             return (
               <Todo
